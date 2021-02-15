@@ -1,22 +1,18 @@
-﻿using System;
+﻿using Lab2_Stru_IVT_7_V.Tests.Classes_1_.DataAccessObjects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2_Stru_IVT_7_V8
+namespace Lab2_Stru_IVT_7_V.Tests
 {
-    public class FileService
+    public class FileService : IFileService
     {
-        public static void Main(string[] args)
-        {
-            FileService file = new FileService();
-            _ = file.MergeTemporaryFiles("s");
-        }
         public int MergeTemporaryFiles(string dir)
         {
-            dir = "tmpFile";
+          
             if (CheckPath(dir))
             {
                 var LisFilesTmp = Directory.GetFiles(dir, "*.tmp").ToList();
@@ -38,7 +34,7 @@ namespace Lab2_Stru_IVT_7_V8
             }
         } // MergeTemporaryFiles
 
-        private bool CheckPath(string dir)
+        public bool CheckPath(string dir)
         {
             if (Directory.Exists(dir))
                 return true;
